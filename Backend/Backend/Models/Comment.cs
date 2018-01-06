@@ -13,6 +13,12 @@ namespace Backend.Models
         
         public string Text { get; set; }
         public string Email { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
+
+        [Required]
+        public int PostId { get; set; }
+
+        // Link to existing Post class 
+        public virtual Post Post { get; set; }
     }
 }

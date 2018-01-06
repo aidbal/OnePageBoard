@@ -34,9 +34,9 @@ namespace Backend.Services
             return post;
         }
 
-        public async Task<int> Update(Post newPost)
+        public async Task<int> Update(Post newPost, int id)
         {
-            var post = await _repository.Update(newPost);
+            var post = await _repository.Update(newPost, id);
             return post;
         }
 

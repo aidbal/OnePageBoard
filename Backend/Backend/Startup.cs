@@ -30,7 +30,11 @@ namespace Backend
             
             services.AddCors();
             services.AddEntityFrameworkSqlite().AddDbContext<DatabaseContext>();
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling =
+                    Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "OnePageBoard API", Version = "v1" });

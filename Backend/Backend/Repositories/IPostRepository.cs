@@ -12,7 +12,7 @@ namespace Backend.Repositories
         Task<ICollection<Post>> GetAll(int offset, int limit);
         Task<Post> Get(int id);
         Task<int> Create(Post post);
-        Task<int> Update(Post post);
+        Task<int> Update(Post post, int id);
         Task<int> Delete(int id);
     }
 }

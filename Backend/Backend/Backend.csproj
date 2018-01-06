@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20180104113532_AddedPosts.Designer.cs" />
     <Compile Remove="Migrations\20180104113549_AddedComments.cs" />
     <Compile Remove="Migrations\20180104113549_AddedComments.Designer.cs" />
+    <Compile Remove="Migrations\20180106101339_AddedComments.cs" />
+    <Compile Remove="Migrations\20180106101339_AddedComments.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

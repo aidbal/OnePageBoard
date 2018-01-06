@@ -44,15 +44,15 @@ namespace Backend.Repositories
             return newPost.Id;
         }
 
-        public async Task<int> Update(Post newPost)
+        public async Task<int> Update(Post newPost, int id)
         {
-            var post = await _posts.FindAsync(newPost.Id);
+            var post = await _posts.FindAsync(id);
             if (post == null) return -1;
             post.Text = newPost.Text;
             post.Title = newPost.Title;
             post.Email = newPost.Email;
             await _context.SaveChangesAsync();
-            return newPost.Id;
+            return id;
         }
 
         public async Task<int> Delete(int id)

@@ -16,9 +16,9 @@ namespace Backend.Services
             _repository = repository;
         }
 
-        public async Task<Comment> Get(int id)
+        public async Task<Comment> Get(int commentId)
         {
-            var comment = await _repository.Get(id);
+            var comment = await _repository.Get(commentId);
             return comment;
         }
 
@@ -34,15 +34,15 @@ namespace Backend.Services
             return comment;
         }
 
-        public async Task<int> Update(Comment newComment)
+        public async Task<int> Update(Comment newComment, int commentId)
         {
-            var comment = await _repository.Update(newComment);
+            var comment = await _repository.Update(newComment, commentId);
             return comment;
         }
 
-        public async Task<int> Delete(int id)
+        public async Task<int> Delete(int commentId)
         {
-            var post = await _repository.Delete(id);
+            var post = await _repository.Delete(commentId);
             return post;
         }
     }

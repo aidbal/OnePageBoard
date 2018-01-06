@@ -21,18 +21,17 @@ namespace Backend.Repositories
             _context = context;
         }
 
-        public async Task<Comment> Get(int id)
+        public async Task<Comment> Get(int commentId)
         {
-            var post = await _comments.FindAsync(id);
-            return post;
+            var comment = await _comments.FindAsync(commentId);
+            return comment;
         }
 
         public async Task<ICollection<Comment>> GetAllPostComments(int offset, int limit, int postId)
         {
-            var result = await  _posts
-                .Where(u => u.Id == postId)
-                .SelectMany(u => u.Comments)
-                .OrderBy(p => p.Id)
+            var result = await  _comments
+                .Where(u => u.PostId == postId)
+                .OrderBy(p => p.Date)
                 .Skip(offset)
                 .Take(limit)
                 .ToArrayAsync();
@@ -43,25 +42,27 @@ namespace Backend.Repositories
         {
             var post = await _posts.FindAsync(postId);
             if (post == null) return -1;
+            newComment.PostId = postId;
+            newComment.Post = post;
             await _comments.AddAsync(newComment);
-            post.Comments.Add(newComment);
             await _context.SaveChangesAsync();
             return newComment.Id;
         }
 
-        public async Task<int> Update(Comment newComment)
+        public async Task<int> Update(Comment newComment, int commentId)
         {
-            var comment = await _comments.FindAsync(newComment.Id);
+            var comment = await _comments.FindAsync(commentId);
             if (comment == null) return -1;
             comment.Text = newComment.Text;
             comment.Email = newComment.Email;
+            comment.Date = newComment.Date;
             await _context.SaveChangesAsync();
-            return newComment.Id;
+            return commentId;
         }
 
-        public async Task<int> Delete(int id)
+        public async Task<int> Delete(int commentId)
         {
-            var found = await _comments.Where(comment => comment.Id == id).FirstOrDefaultAsync();
+            var found = await _comments.FindAsync(commentId);
             if (found == null)
                 return -1;
             _context.Remove(found);

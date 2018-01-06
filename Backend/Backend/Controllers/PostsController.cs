@@ -49,9 +49,9 @@ namespace Backend.Controllers
         
         // PUT: api/posts/5
         [Microsoft.AspNetCore.Mvc.HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [Microsoft.AspNetCore.Mvc.FromBody]Post post)
+        public async Task<IActionResult> Put([FromRoute]int id, [Microsoft.AspNetCore.Mvc.FromBody]Post post)
         {
-            var updatedId = await _service.Update(post);
+            var updatedId = await _service.Update(post, id);
             if (updatedId == -1) return NotFound();
             return Ok(updatedId);
         }

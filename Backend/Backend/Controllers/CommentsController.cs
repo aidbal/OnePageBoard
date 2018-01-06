@@ -44,6 +44,7 @@ namespace Backend.Controllers
         public async Task<IActionResult> Post([Microsoft.AspNetCore.Mvc.FromBody]Comment comment, [FromQuery]int postId)
         {
             var id = await _service.Create(comment, postId);
+            if(id == -1) return NotFound();
             return CreatedAtRoute("GetComment", new { id }, comment);
         }
 
@@ -51,7 +52,7 @@ namespace Backend.Controllers
         [Microsoft.AspNetCore.Mvc.HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [Microsoft.AspNetCore.Mvc.FromBody]Comment comment)
         {
-            var updatedId = await _service.Update(comment);
+            var updatedId = await _service.Update(comment, id);
             if (updatedId == -1) return NotFound();
             return Ok(updatedId);
         }
