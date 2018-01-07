@@ -80,54 +80,68 @@ mat-card-actions.card-info-container {
 }
 
 mat-card-actions > .card-date-panel {
-  //box-shadow: -2px -2spx 5px -3px rgba(0, 0, 0, 0.75);
-  ////height: 32px;
-  //background-color: $action_buttons_color;
-  //color: $icon_color;
-  ////margin-top: 8px;
-  ////margin-bottom: -8px;
-  ////margin-right: -16px;
-  ////margin-left:10px;
-  //margin: 0 auto;
-  //padding: 0 4px;
-  //border-top-left-radius: 4px;
-  //border-top-right-radius: 4px;
-  //align-self: center;
-  //height: 24px;
-  //
-  //display: inline-block;
+//box-shadow: -2px -2spx 5px -3px rgba(0, 0, 0, 0.75);
+////height: 32px;
+//background-color: $action_buttons_color;
+//color: $icon_color;
+////margin-top: 8px;
+////margin-bottom: -8px;
+////margin-right: -16px;
+////margin-left:10px;
+//margin: 0 auto;
+//padding: 0 4px;
+//border-top-left-radius: 4px;
+//border-top-right-radius: 4px;
+//align-self: center;
+//height: 24px;
+//
+//display: inline-block;
   vertical-align: middle;
   font-size: 10pt;
-  //margin: 0 0 0 auto;
+//margin: 0 0 0 auto;
   float:right;
 }
 
 .card-comments-panel {
-  //box-shadow: -2px -2px 2px -3px rgba(0, 0, 0, 0.75);
-  ////margin-top: 8px;
-  ////margin-bottom: -8px;
-  ////margin-right: -4px;
-  //background-color: $action_buttons_color;
-  //color: $icon_color;
-  //
-  //height: 24px;
-  //border-top-left-radius: 4px;
-  //border-top-right-radius: 4px;
-  //
-  //display: inline-block;
+//box-shadow: -2px -2px 2px -3px rgba(0, 0, 0, 0.75);
+////margin-top: 8px;
+////margin-bottom: -8px;
+////margin-right: -4px;
+//background-color: $action_buttons_color;
+//color: $icon_color;
+//
+//height: 24px;
+//border-top-left-radius: 4px;
+//border-top-right-radius: 4px;
+//
+//display: inline-block;
   vertical-align: middle;
   font-size: 10pt;
   float:left;
 }
 
 .card-comments {
-  //margin-left: 4px;
-  //margin-right: 8px;
-  //align-self: center;
+//margin-left: 4px;
+//margin-right: 8px;
+//align-self: center;
 }
 
-.mat-card{
+.mat-card.card{
   min-height: 200px;
+  margin: 8px auto;
+}
+
+.mat-card.comment{
+  height: 100px;
+  margin: 8px auto;
+}
+
+.mat-card-title.email{
+  margin-left: -8px;
+}
+
+.center{
+  text-align: center;
 }
 
 /**

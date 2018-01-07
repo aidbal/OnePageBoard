@@ -35,7 +35,7 @@ namespace Backend.Repositories
         {
             var result = await  _comments
                 .Where(u => u.PostId == postId)
-                .OrderBy(p => p.Date)
+                .OrderByDescending(p => p.Date)
                 .Skip(offset)
                 .Take(limit)
                 .ToArrayAsync();

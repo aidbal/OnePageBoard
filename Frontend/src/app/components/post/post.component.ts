@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Post} from '../../models/post';
 import {PostService} from '../../services/post.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -10,7 +11,7 @@ import {PostService} from '../../services/post.service';
 export class PostComponent implements OnInit {
   @Input() post: Post;
   @Input() posts: Post[];
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -24,7 +25,7 @@ export class PostComponent implements OnInit {
     this.posts.splice(index, 1);
   }
 
-  showPost(postId){
-
+  showPost(postId) {
+    this.router.navigate(['posts', 'detail', postId]);
   }
 }

@@ -1,4 +1,4 @@
 <mat-toolbar color="theme" class="navbar" >
-  <span class="navbar-title noselect">OnePageBoard</span>
-  <button mat-raised-button class="button" id="createPostButton">Create Post</button>
+  <span class="navbar-title noselect" (click)="goHome()">OnePageBoard</span>
+  <button (click)="createPost()" mat-raised-button class="button" id="createPostButton">Create Post</button>
 </mat-toolbar>

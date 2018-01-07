@@ -16,9 +16,7 @@ export class PostContainerComponent implements OnInit {
   ngOnInit() {
     this.postService.getPosts().subscribe(posts => {
       this.posts = posts;
-      console.log(posts[0]);
       this.postCount = posts.length;
-      console.log(posts);
     });
     this.postService.createPostObservable.subscribe((newPost: Post) => {
       this.posts.unshift(newPost);
