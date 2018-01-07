@@ -1,0 +1,181 @@
+@import '~@angular/material/theming';
+
+/*
+  For adjusting the components color
+  or maybe extract the colors form material theme (?)
+ */
+
+$del_color_active: darkred;
+$icon_color_active: white;
+$action_buttons_color: #7d1935;
+$voted_icon_color: pink;
+
+$del_color: darken($del_color_active, 15%);
+$icon_color: darken($icon_color_active, 15%);
+
+.card-spacer {
+  flex: 1 1 auto;
+}
+
+.card-remove {
+  box-shadow: -2px 2px 5px -3px rgba(0, 0, 0, 0.75);
+  transition: color .1s, background-color 0.1s, box-shadow 0.1s;
+  background-color: $del_color;
+  color: $icon_color;
+
+  cursor: pointer;
+  border-radius: 1px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin-right: -24px;
+  margin-top: -24px;
+  width: 32px;
+  height: 32px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.card-remove:hover {
+  box-shadow: -2px 2px 16px -4px rgba(0, 0, 0, 0.6);
+  color: $icon_color_active;
+  background-color: $del_color_active;
+  text-shadow: 0 0 20px $icon_color_active;
+}
+
+.mat-card-actions {
+  cursor: default;
+  bottom: 0;
+  margin-left: -24px;
+  border-radius-bottomleft: 8px;
+  border-radius-bottomright: 8px;
+  border-radius: 4px;
+}
+
+.mat-card-title{
+  font-size:24px;
+  margin: -16px 0 8px -16px;
+}
+
+.mat-card-subtitle{
+  margin-left: -16px;
+}
+
+.mat-card>.mat-card-actions:last-child{
+  margin-bottom: 0;
+  padding: 10px;
+}
+
+mat-card-actions.card-info-container {
+  display: flex;
+  justify-content: left;
+  background-color: rgb(70, 150, 173);
+  color: white;
+  position:absolute;
+
+}
+
+mat-card-actions > .card-date-panel {
+  //box-shadow: -2px -2spx 5px -3px rgba(0, 0, 0, 0.75);
+  ////height: 32px;
+  //background-color: $action_buttons_color;
+  //color: $icon_color;
+  ////margin-top: 8px;
+  ////margin-bottom: -8px;
+  ////margin-right: -16px;
+  ////margin-left:10px;
+  //margin: 0 auto;
+  //padding: 0 4px;
+  //border-top-left-radius: 4px;
+  //border-top-right-radius: 4px;
+  //align-self: center;
+  //height: 24px;
+  //
+  //display: inline-block;
+  vertical-align: middle;
+  font-size: 10pt;
+  margin: 0 0 0 auto;
+}
+
+.card-comments-panel {
+  //box-shadow: -2px -2px 2px -3px rgba(0, 0, 0, 0.75);
+  ////margin-top: 8px;
+  ////margin-bottom: -8px;
+  ////margin-right: -4px;
+  //background-color: $action_buttons_color;
+  //color: $icon_color;
+  //
+  //height: 24px;
+  //border-top-left-radius: 4px;
+  //border-top-right-radius: 4px;
+  //
+  //display: inline-block;
+  vertical-align: middle;
+  font-size: 10pt;
+}
+
+.card-comments {
+  //margin-left: 4px;
+  //margin-right: 8px;
+  //align-self: center;
+}
+
+.mat-card{
+  min-height: 200px;
+}
+
+/**
+  The card decreases in width by 8px @600px screen width
+ */
+@media screen and (max-width: 600px) {
+  .card-remove {
+    margin-right: -16px;
+  }
+  mat-card-actions > .card-info-panel {
+    margin-right: -16px;
+  }
+}
+
+.card-info-panel > mat-icon {
+  cursor: pointer;
+  align-self: center;
+  padding-right: 8px;
+  font-size: 32px;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.card-info-panel > mat-icon:hover {
+  color: $icon_color_active;
+  text-shadow: 0 0 20px $icon_color_active;
+}
+
+.card-remove{
+  text-decoration: none;
+  border-radius: 4px;
+}
+.card-remove > mat-icon {
+  margin: auto;
+}
+
+mat-card.card {
+  align-self: center;
+  margin: 8px;
+  width: 400px; // on small screens the card should take up most of the width
+  border-radius: 8px;
+}
+
+
+@media screen and (min-width: 960px) and (max-width: 1270px) {
+  mat-card.card{
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 1271px) {
+  mat-card.card{
+    width: 560px;
+  }
+}
+

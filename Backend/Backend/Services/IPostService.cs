@@ -9,10 +9,10 @@ namespace Backend.Services
 {
     public interface IPostService
     {
-        Task<ICollection<Post>> GetAll(int offset, int limit);
-        Task<Post> Get(int id);
-        Task<int> Create(Post post);
-        Task<int> Update(Post post, int id);
+        Task<ICollection<PostDto>> GetAll(int offset, int limit);
+        Task<PostDto> Get(int id);
+        Task<int> Create(PostDto post);
+        Task<int> Update(PostDto post, int id);
         Task<int> Delete(int id);
     }
 }

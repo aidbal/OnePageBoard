@@ -1,0 +1,74 @@
+li>a{
+}
+a.active{
+  font-weight: bolder;
+}
+
+mat-toolbar.nav-bar{
+  padding: 0;
+}
+
+.navbar {
+  background-color: #4A96AD;
+  color: white;
+}
+
+.button {
+  background-color: #7D1935;
+  color: white;
+}
+
+.navbar-spacer {
+  flex: 1 1 auto;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.navbar-title{
+  cursor: pointer;
+  padding: 16px;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  padding-top: 20px;
+  flex-grow: 1;
+  background-color: black;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .content{
+    top: 56px;
+    height: calc(100% - 56px);
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .content{
+    top: 64px;
+    height: calc(100% - 64px);
+  }
+}
+
+#createPostButton{
+  transition: box-shadow 0.2s;
+}
+
+#createPostButton:hover{
+  box-shadow: 0 6px 12px -4px rgba(0,0,0,0.5);
+  transition: box-shadow 0.2s;
+}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Backend.DTO;
 using Backend.Models;
 using Backend.Repositories;
 
@@ -16,25 +17,25 @@ namespace Backend.Services
             _repository = repository;
         }
 
-        public async Task<Post> Get(int id)
+        public async Task<PostDto> Get(int id)
         {
             var post = await _repository.Get(id);
             return post;
         }
 
-        public async Task<ICollection<Post>> GetAll(int offset, int limit)
+        public async Task<ICollection<PostDto>> GetAll(int offset, int limit)
         {
             var posts = await _repository.GetAll(offset, limit);
             return posts;
         }
 
-        public async Task<int> Create(Post newPost)
+        public async Task<int> Create(PostDto newPost)
         {
             var post = await _repository.Create(newPost);
             return post;
         }
 
-        public async Task<int> Update(Post newPost, int id)
+        public async Task<int> Update(PostDto newPost, int id)
         {
             var post = await _repository.Update(newPost, id);
             return post;

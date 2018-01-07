@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Backend.Database;
 using Backend.Repositories;
 using Backend.Services;
@@ -30,6 +31,7 @@ namespace Backend
             
             services.AddCors();
             services.AddEntityFrameworkSqlite().AddDbContext<DatabaseContext>();
+            services.AddAutoMapper();
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling =

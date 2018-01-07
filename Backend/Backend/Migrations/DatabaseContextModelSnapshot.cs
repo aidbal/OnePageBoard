@@ -44,6 +44,8 @@ namespace Backend.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("CommentsCount");
+
                     b.Property<DateTime>("Date");
 
                     b.Property<string>("Email");

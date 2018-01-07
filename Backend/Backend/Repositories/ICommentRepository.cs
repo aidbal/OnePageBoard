@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Backend.DTO;
 using Backend.Models;
 
 namespace Backend.Repositories
 {
     public interface ICommentRepository
     {
-        Task<ICollection<Comment>> GetAllPostComments(int offset, int limit, int postId);
-        Task<Comment> Get(int commentId);
-        Task<int> Create(Comment comment, int postId);
-        Task<int> Update(Comment comment, int commentId);
+        Task<ICollection<CommentDto>> GetAllPostComments(int offset, int limit, int postId);
+        Task<CommentDto> Get(int commentId);
+        Task<int> Create(CommentDto comment, int postId);
+        Task<int> Update(CommentDto comment, int commentId);
         Task<int> Delete(int commentId);
     }
 }

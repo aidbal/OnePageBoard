@@ -1,0 +1,4 @@
+<div *ngIf="postCount <= 0" class="center no-posts">No posts found!</div>
+<div class="post-container">
+  <app-post *ngFor="let post of posts" [post]="post" [posts]="posts"></app-post>
+</div>
