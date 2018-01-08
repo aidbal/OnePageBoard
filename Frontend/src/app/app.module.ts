@@ -19,6 +19,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
 import {CreatePostComponent} from './components/create-post/create-post.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {CreatePostComponent} from './components/create-post/create-post.componen
     PostComponent,
     PostContainerComponent,
     PostDetailsComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import {CreatePostComponent} from './components/create-post/create-post.componen
     AppRoutingModule,
     FormsModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule
   ],
   providers: [
     PostService,

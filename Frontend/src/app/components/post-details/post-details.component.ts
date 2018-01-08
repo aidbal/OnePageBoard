@@ -4,6 +4,7 @@ import { Comment } from '../../models/comment';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { CommentService } from '../../services/comment.service';
+import {FormControl, Validators} from "@angular/forms";
 
 
 @Component({
@@ -15,12 +16,9 @@ export class PostDetailsComponent implements OnInit {
   post: Post;
   comments: Comment[];
   postId: Number;
-  commentsLength: Number;
-  editorEnabled: boolean[] = [];
-  editableEmail: string[] = [];
-  editableText: string[] = [];
   newEmail: string;
   newText: string;
+  emailControl = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(private postService: PostService,
               private commentService: CommentService,
@@ -41,69 +39,38 @@ export class PostDetailsComponent implements OnInit {
 
     this.commentService.getComments(this.postId).subscribe(comments => {
       this.comments = comments;
-      this.commentsLength = this.comments.length;
-      this.initializeArray();
     });
   }
 
-
-
-  initializeArray() {
-    for (let i = 0; i < this.commentsLength; i++) {
-      this.editorEnabled[i] = false;
-      this.editableEmail[i] = this.comments[i].email;
-      this.editableText[i] = this.comments[i].text;
-    }
+  getEmailErrorMessage() {
+    return this.emailControl.hasError('required') ? 'You must enter a value' :
+      this.emailControl.hasError('email') ? 'Not a valid email' :
+        '';
   }
 
-  enableEditor(editableId) {
-    for (let i = 0; i < this.commentsLength; i++) {
-      this.editorEnabled[i] = false;
+  isNewCommentEmpty(): boolean {
+    if (this.newEmail && this.newText) {
+      return false;
     }
-    this.editorEnabled[editableId] = true;
+    return true;
   }
 
-  saveNewComment(postId){
+  saveNewComment() {
     let commentToSave: Comment = new Comment();
     if (this.newEmail != null && this.newText != null) {
       if (this.newEmail.length > 0 && this.newText.length > 0) {
         commentToSave.email = this.newEmail;
         commentToSave.text = this.newText;
-        this.commentService.createComment(commentToSave, postId).subscribe(() => {
+        this.commentService.createComment(commentToSave, this.post.id).subscribe(() => {
           location.reload();
         });
       }
     }
   }
 
-  save(commentId, editableId) {
-    let commentToSave: Comment;
-    commentToSave = this.comments.find(x => x.id === commentId);
-    if (commentToSave != null &&
-      this.editableEmail[editableId].length > 0 &&
-      this.editableText[editableId].length > 0 ) {
-      commentToSave.email = this.editableEmail[editableId];
-      commentToSave.text = this.editableText[editableId];
-      this.commentService.updateComment(commentToSave, commentId).subscribe(() => {
-        location.reload();
-      });
-    }
-  }
-
-  cancel(editableId) {
-    this.editorEnabled[editableId] = false;
-  }
-
-  removePost(postId) {
-    this.postService.deletePost(postId).subscribe(() => {
+  removePost() {
+    this.postService.deletePost(this.post.id).subscribe(() => {
         this.router.navigate(['posts']);
-      });
-  }
-
-  removeComment(commentId) {
-    const index = this.comments.findIndex(comment => comment.id === commentId);
-    this.commentService.deleteComment(commentId).subscribe(() => {
-      this.comments.splice(index, 1);
       });
   }
 }

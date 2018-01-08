@@ -50,6 +50,11 @@ $icon_color: darken($icon_color_active, 15%);
   width: 96%;
 }
 
+
+.center{
+  text-align: center;
+}
+
 mat-card-actions.card-info-container {
   display: flex;
   justify-content: left;
@@ -59,23 +64,9 @@ mat-card-actions.card-info-container {
 
 }
 
-mat-card-actions > .card-date-panel {
-  vertical-align: middle;
-  font-size: 10pt;
-  //margin: 0 0 0 auto;
-  float:right;
-}
-
-.card-comments-panel {
-  vertical-align: middle;
-  font-size: 10pt;
-  float:left;
-}
-
-.card-comments {
-  //margin-left: 4px;
-  //margin-right: 8px;
-  //align-self: center;
+button{
+  background-color: #7d1935;
+  color: white;
 }
 
 .mat-card.card{
@@ -83,10 +74,6 @@ mat-card-actions > .card-date-panel {
   margin: 8px auto;
 }
 
-.mat-card.comment{
-  min-height: 100px;
-  margin: 8px auto;
-}
 
 .mat-card-title.email{
   margin-left: -8px;

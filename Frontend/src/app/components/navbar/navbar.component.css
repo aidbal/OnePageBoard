@@ -8,6 +8,17 @@ mat-toolbar.nav-bar{
   padding: 0;
 }
 
+.menu-link {
+  font-size: 12pt;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.menu-link:hover {
+  text-decoration: underline;
+}
+
 .navbar {
   background-color: #4A96AD;
   color: white;

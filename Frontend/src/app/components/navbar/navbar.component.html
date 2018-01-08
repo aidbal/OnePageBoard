@@ -1,4 +1,5 @@
 <mat-toolbar color="theme" class="navbar" >
   <span class="navbar-title noselect" (click)="goHome()">OnePageBoard</span>
   <button (click)="createPost()" mat-raised-button class="button" id="createPostButton">Create Post</button>
+  <a class="menu-link" *ngIf="!checkIfMain()" (click)="goBack()">Go back</a>
 </mat-toolbar>

@@ -8,3 +8,7 @@ body{
 .mat-form-field{
   width: 96%;
 }
+
+.mat-card-header-text{
+  margin: 0;
+}

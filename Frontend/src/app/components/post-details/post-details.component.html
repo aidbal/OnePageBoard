@@ -5,7 +5,7 @@
     </mat-card-title>
     <mat-card-subtitle>{{post.email}}</mat-card-subtitle>
     <span class="card-spacer"></span>
-    <a class="card-remove noselect" (click)="removePost(post.id)">
+    <a class="card-remove noselect" (click)="removePost()">
       <mat-icon>close</mat-icon>
     </a>
   </mat-card-header>
@@ -27,66 +27,22 @@
   </mat-card-actions>
 </mat-card>
 
+<app-comment *ngFor="let comment of comments, let i = index"
+             [comment]="comments[i]">
 
-<mat-card *ngFor="let comment of comments, let i = index" class="card comment">
-  <mat-card-header>
-    <mat-form-field class="email" *ngIf="editorEnabled[i]">
-      <input type="email" [(ngModel)]="editableEmail[i]" matInput placeholder="Email" value="{{comment.email}}">
-    </mat-form-field>
-    <mat-card-title class="email" *ngIf="!editorEnabled[i]">
-      {{comment.email}}
-    </mat-card-title>
-    <span class="card-spacer"></span>
-    <a class="card-remove noselect" (click)="enableEditor(i)">
-      <mat-icon>edit</mat-icon>
-    </a>
-    <a class="card-remove noselect" (click)="removeComment(comment.id)">
-      <mat-icon>close</mat-icon>
-    </a>
-  </mat-card-header>
-  <mat-card-content>
-    <mat-form-field *ngIf="editorEnabled[i]">
-      <textarea [(ngModel)]="editableText[i]" matInput placeholder="Text" value="{{comment.text}}"></textarea>
-    </mat-form-field>
-    <p *ngIf="!editorEnabled[i]" class="padded">
-      {{comment.text}}
-    </p>
-  </mat-card-content>
-  <mat-card-actions class="card-info-container noselect">
-    <div *ngIf="editorEnabled[i]">
-      <a (click)="save(comment.id, i)" class="clickable">Save</a>
-      <a (click)="cancel(i)" class="clickable">Cancel</a>
-    </div>
-    <span class="card-comments-panel">
-      <span class="card-comments">
-      </span>
-    </span>
-    <!--<span class="card-spacer"></span>-->
-    <span class="card-date-panel">
-      {{comment.date | date: "yyyy.MM.dd hh:mm"}}
-    </span>
-  </mat-card-actions>
-</mat-card>
-
+</app-comment>
 
 <mat-card class="card comment">
   <h2 class="center">New Comment</h2>
-  <mat-card-header>
-    <div class="mat-card-header-text">
-      <mat-form-field class="email">
-        <input type="email" [(ngModel)]="newEmail" matInput placeholder="Email">
-      </mat-form-field>
-      <span class="card-spacer"></span>
-    </div>
-  </mat-card-header>
   <mat-card-content>
-    <mat-form-field>
-      <textarea [(ngModel)]="newText" matInput placeholder="Text"></textarea>
+    <mat-form-field class="email">
+      <input type="email" [(ngModel)]="newEmail" [formControl]="emailControl" matInput placeholder="Email" required>
+      <mat-error *ngIf="emailControl.invalid">{{getEmailErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 256 characters">
+      <textarea [(ngModel)]="newText" matInput maxlength="256" placeholder="Text" required></textarea>
+      <mat-hint align="end">{{newText?.length || 0}}/256</mat-hint>
     </mat-form-field>
   </mat-card-content>
-  <mat-card-actions class="card-info-container noselect">
-    <div>
-      <a (click)="saveNewComment(post.id)" class="clickable">Save</a>
-    </div>
-  </mat-card-actions>
+  <button mat-raised-button [disabled]="isNewCommentEmpty() || emailControl.invalid" (click)="saveNewComment()">Create</button>
 </mat-card>

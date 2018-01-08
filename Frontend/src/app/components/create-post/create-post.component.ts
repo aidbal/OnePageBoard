@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Post} from "../../models/post";
 import {PostService} from "../../services/post.service";
 import {Router} from "@angular/router";
@@ -13,6 +13,8 @@ export class CreatePostComponent implements OnInit {
   email: string;
   text: string;
   title: string;
+  emailControl = new FormControl('', [Validators.required, Validators.email]);
+  titleControl = new FormControl('', Validators.required);
 
   constructor(private postService: PostService,
               private router: Router) { }
@@ -20,17 +22,35 @@ export class CreatePostComponent implements OnInit {
   ngOnInit() {
   }
 
+  getTitleErrorMessage() {
+    return this.titleControl.hasError('required') ? 'You must enter a value' :
+        '';
+  }
+
+  getEmailErrorMessage() {
+    return this.emailControl.hasError('required') ? 'You must enter a value' :
+      this.emailControl.hasError('email') ? 'Not a valid email' :
+        '';
+  }
+
+  isFormEmpty(): boolean {
+    if (this.title && this.text && this.email) {
+      return false;
+    }
+    return true;
+  }
+
   public create() {
 
-    if (this.email.length > 0 &&
-      this.title.length > 0 &&
-        this.text.length > 0) {
+    if (!this.isFormEmpty()) {
       let post: Post = new Post();
       post.email = this.email;
       post.title = this.title;
       post.text = this.text;
       this.postService.createPost(post).subscribe(() => {
         this.router.navigate(['posts']);
+      }, error => {
+
       });
     }
   }

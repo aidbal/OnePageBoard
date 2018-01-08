@@ -20,4 +20,12 @@ export class NavbarComponent implements OnInit {
   createPost() {
     this.router.navigate(['posts', 'create-post']);
   }
+
+  checkIfMain() {
+    return this.router.url === '/posts';
+  }
+
+  goBack() {
+    window.history.back();
+  }
 }
