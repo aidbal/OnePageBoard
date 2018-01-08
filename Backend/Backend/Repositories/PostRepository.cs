@@ -35,7 +35,7 @@ namespace Backend.Repositories
         public async Task<ICollection<PostDto>> GetAll(int offset, int limit)
         {
             var posts = await _posts
-                .OrderBy(m => m.Id)
+                .OrderByDescending(m => m.Id)
                 .Skip(offset)
                 .Take(limit)
                 .ToArrayAsync();

@@ -21,11 +21,10 @@ export class CommentService {
     return this.http.post(`${this.constants.commentsApiUrl}?postId=${postId}`, body, this.getRequestOptions())
       .map((response) => {
         body.id = parseInt(response['id'], 10);
-      }).subscribe();
+      });
   }
   updateComment(body: Comment, commentId) {
-    return this.http.put(`${this.constants.commentsApiUrl}/${commentId}`, body, this.getRequestOptions())
-      .subscribe();
+    return this.http.put(`${this.constants.commentsApiUrl}/${commentId}`, body, this.getRequestOptions());
   }
 
   deleteComment(commentId) {

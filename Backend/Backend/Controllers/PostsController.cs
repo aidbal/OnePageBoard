@@ -45,6 +45,7 @@ namespace Backend.Controllers
         public async Task<IActionResult> Post([Microsoft.AspNetCore.Mvc.FromBody]PostDto post)
         {
             var id = await _service.Create(post);
+            post.Id = id;
             return CreatedAtRoute("GetPost", new {id}, post);
         }
         

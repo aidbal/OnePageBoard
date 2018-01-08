@@ -130,18 +130,6 @@ mat-card-actions > .card-date-panel {
   min-height: 200px;
 }
 
-/**
-  The card decreases in width by 8px @600px screen width
- */
-@media screen and (max-width: 600px) {
-  .card-remove {
-    margin-right: -16px;
-  }
-  mat-card-actions > .card-info-panel {
-    margin-right: -16px;
-  }
-}
-
 .card-info-panel > mat-icon {
   cursor: pointer;
   align-self: center;
@@ -171,12 +159,12 @@ mat-card.card {
 }
 
 
-@media screen and (min-width: 960px) and (max-width: 1270px) {
+@media screen and (max-width: 1270px) {
   mat-card.card{
     width: 400px;
   }
   .mat-card>.mat-card-actions:last-child{
-    width: 400px;
+    width: 428px;
   }
 }
 
@@ -185,7 +173,7 @@ mat-card.card {
     width: 560px;
   }
   .mat-card>.mat-card-actions:last-child{
-    width: 560px;
+    width: 588px;
   }
 }
 

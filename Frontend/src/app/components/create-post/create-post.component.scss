@@ -13,36 +13,8 @@ $voted_icon_color: pink;
 $del_color: darken($del_color_active, 15%);
 $icon_color: darken($icon_color_active, 15%);
 
-.card-spacer {
-  flex: 1 1 auto;
-}
-
-.card-remove {
-  box-shadow: -2px 2px 5px -3px rgba(0, 0, 0, 0.75);
-  transition: color .1s, background-color 0.1s, box-shadow 0.1s;
-  background-color: $del_color;
-  color: $icon_color;
-
-  cursor: pointer;
-  border-radius: 1px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  margin-right: -24px;
-  margin-top: -24px;
-  width: 32px;
-  height: 32px;
-}
-
 .clickable {
   cursor: pointer;
-}
-
-.card-remove:hover {
-  box-shadow: -2px 2px 16px -4px rgba(0, 0, 0, 0.6);
-  color: $icon_color_active;
-  background-color: $del_color_active;
-  text-shadow: 0 0 20px $icon_color_active;
 }
 
 .mat-card-actions {
@@ -63,11 +35,19 @@ $icon_color: darken($icon_color_active, 15%);
   margin-left: -16px;
 }
 
+.mat-card-header-text{
+  width: 100%;
+}
+
 .mat-card>.mat-card-actions:last-child{
   margin-bottom: 0;
   padding: 10px;
   display: block;
   clear: both;
+}
+
+.mat-form-field{
+  width: 96%;
 }
 
 mat-card-actions.card-info-container {
@@ -80,50 +60,22 @@ mat-card-actions.card-info-container {
 }
 
 mat-card-actions > .card-date-panel {
-//box-shadow: -2px -2spx 5px -3px rgba(0, 0, 0, 0.75);
-////height: 32px;
-//background-color: $action_buttons_color;
-//color: $icon_color;
-////margin-top: 8px;
-////margin-bottom: -8px;
-////margin-right: -16px;
-////margin-left:10px;
-//margin: 0 auto;
-//padding: 0 4px;
-//border-top-left-radius: 4px;
-//border-top-right-radius: 4px;
-//align-self: center;
-//height: 24px;
-//
-//display: inline-block;
   vertical-align: middle;
   font-size: 10pt;
-//margin: 0 0 0 auto;
+  //margin: 0 0 0 auto;
   float:right;
 }
 
 .card-comments-panel {
-//box-shadow: -2px -2px 2px -3px rgba(0, 0, 0, 0.75);
-////margin-top: 8px;
-////margin-bottom: -8px;
-////margin-right: -4px;
-//background-color: $action_buttons_color;
-//color: $icon_color;
-//
-//height: 24px;
-//border-top-left-radius: 4px;
-//border-top-right-radius: 4px;
-//
-//display: inline-block;
   vertical-align: middle;
   font-size: 10pt;
   float:left;
 }
 
 .card-comments {
-//margin-left: 4px;
-//margin-right: 8px;
-//align-self: center;
+  //margin-left: 4px;
+  //margin-right: 8px;
+  //align-self: center;
 }
 
 .mat-card.card{
@@ -144,15 +96,6 @@ mat-card-actions > .card-date-panel {
   text-align: center;
 }
 
-/**
-  The card decreases in width by 8px @600px screen width
- */
-@media screen and (max-width: 600px) {
-  .card-remove {
-    margin-right: -16px;
-  }
-}
-
 .card-info-panel > mat-icon {
   cursor: pointer;
   align-self: center;
@@ -164,15 +107,6 @@ mat-card-actions > .card-date-panel {
 .card-info-panel > mat-icon:hover {
   color: $icon_color_active;
   text-shadow: 0 0 20px $icon_color_active;
-}
-
-.card-remove{
-  text-decoration: none;
-  border-radius: 4px;
-  margin-right: 1px;
-}
-.card-remove > mat-icon {
-  margin: auto;
 }
 
 mat-card.card {

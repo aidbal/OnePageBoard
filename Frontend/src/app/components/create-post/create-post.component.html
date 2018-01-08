@@ -1,70 +1,28 @@
-<div class="row">
-  <div class= "col-sm-7  custom-row jumbotron">
-
-    <form class="form-horizontal"  [formGroup]="signupForm"
-          (ngSubmit)="onFormSubmit()">
-
-      <fieldset>
-        <legend>Create new post</legend>
-
-        <!--- Email Block -->
-        <div class="form-group">
-          <label for="inputEmail" class="col-lg-2
-              control-label">Email</label>
-
-          <div class="col-lg-7">
-            <input type="text"  class="form-control"
-                   id="inputEmail" formControlName = "email"
-                   placeholder="Email">
-          </div>
-
-          <!-- Email error block -->
-          <div *ngIf="email.invalid && email.touched"
-               class="col-sm-3 text-danger">
-
-            <div *ngIf = "email.errors?.required">
-              Email field can't be blank
-            </div>
-
-            <div *ngIf = "email.errors?.pattern">
-              The email id doesn't seem right
-            </div>
-
-          </div>
-        </div>
-
-        <!--- Text Block -->
-        <div class="form-group">
-          <label for="inputText" class="col-lg-2
-              control-label">Text</label>
-
-          <div class="col-lg-7">
-            <input type="text"  class="form-control"
-                   id="inputText"
-                   placeholder="Text">
-          </div>
-
-          <!-- Email error block -->
-          <div *ngIf="text.invalid && text.touched"
-               class="col-sm-3 text-danger">
-
-            <div *ngIf = "text.errors?.required">
-              Email field can't be blank
-            </div>
-
-          </div>
-        </div>
-
-        <!--- Buttons Block -->
-        <div class="form-group">
-          <div class="col-lg-10 col-lg-offset-2">
-            <button type="reset" class="btn btn-default">Cancel</button>
-            <button type="submit" [disabled] = "!signupForm.valid" class="btn btn-primary">Submit</button>
-          </div>
-        </div>
-      </fieldset>
-    </form>
-    <!--- Log the FormGroup values to see if the binding is working -->
-
-  </div>
-</div>
+<mat-card class="card">
+  <mat-card-header>
+    <div class="mat-card-header-text">
+      <mat-card-title class="full-width">
+        <mat-form-field class="title">
+          <input type="text" [(ngModel)]="title" matInput placeholder="Title">
+        </mat-form-field>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <mat-form-field class="email">
+          <input type="email" [(ngModel)]="email" matInput placeholder="Email">
+        </mat-form-field>
+      </mat-card-subtitle>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      <mat-form-field>
+        <textarea [(ngModel)]="text" matInput placeholder="Text"></textarea>
+      </mat-form-field>
+    </p>
+  </mat-card-content>
+  <mat-card-actions class="card-info-container noselect">
+    <div>
+      <a class="clickable" (click)="create()">Create</a>
+    </div>
+  </mat-card-actions>
+</mat-card>

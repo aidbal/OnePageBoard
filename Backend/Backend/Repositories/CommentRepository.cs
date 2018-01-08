@@ -46,10 +46,14 @@ namespace Backend.Repositories
         {
             var post = await _posts.FindAsync(postId);
             if (post == null) return -1;
-            var comment = _mapper.Map<CommentDto, Comment>(newComment);
-            comment.PostId = postId;
-            comment.Post = post;
-            comment.Date = DateTime.Now;
+            Comment comment = new Comment
+            {
+                Email = newComment.Email,
+                Text = newComment.Text,
+                PostId = postId,
+                Post = post,
+                Date = DateTime.Now
+            };
             post.CommentsCount += 1;
             await _comments.AddAsync(comment);
             await _context.SaveChangesAsync();

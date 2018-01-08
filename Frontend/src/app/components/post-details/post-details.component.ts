@@ -63,8 +63,10 @@ export class PostDetailsComponent implements OnInit {
     if (this.newEmail.length > 0 && this.newText.length > 0) {
       commentToSave.email = this.newEmail;
       commentToSave.text = this.newText;
-      this.commentService.createComment(commentToSave, postId);
-      location.reload();
+      this.commentService.createComment(commentToSave, postId).subscribe(() => {
+        location.reload();
+      });
+      //
     }
   }
 
@@ -76,8 +78,9 @@ export class PostDetailsComponent implements OnInit {
       this.editableText.length > 0 ) {
       commentToSave.email = this.editableEmail[editableId];
       commentToSave.text = this.editableText[editableId];
-      this.commentService.updateComment(commentToSave, commentId);
-      location.reload();
+      this.commentService.updateComment(commentToSave, commentId).subscribe(() => {
+        location.reload();
+      });
     }
   }
 
