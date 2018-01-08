@@ -32,8 +32,13 @@ export class PostDetailsComponent implements OnInit {
       this.postId = params['id'];
     });
     this.postService.getPost(this.postId).subscribe(post => {
-      this.post = post;
+      if (post == null) {
+        this.router.navigate(['posts']);
+      } else {
+        this.post = post;
+      }
     });
+
     this.commentService.getComments(this.postId).subscribe(comments => {
       this.comments = comments;
       this.commentsLength = this.comments.length;
@@ -60,13 +65,14 @@ export class PostDetailsComponent implements OnInit {
 
   saveNewComment(postId){
     let commentToSave: Comment = new Comment();
-    if (this.newEmail.length > 0 && this.newText.length > 0) {
-      commentToSave.email = this.newEmail;
-      commentToSave.text = this.newText;
-      this.commentService.createComment(commentToSave, postId).subscribe(() => {
-        location.reload();
-      });
-      //
+    if (this.newEmail != null && this.newText != null) {
+      if (this.newEmail.length > 0 && this.newText.length > 0) {
+        commentToSave.email = this.newEmail;
+        commentToSave.text = this.newText;
+        this.commentService.createComment(commentToSave, postId).subscribe(() => {
+          location.reload();
+        });
+      }
     }
   }
 
@@ -74,8 +80,8 @@ export class PostDetailsComponent implements OnInit {
     let commentToSave: Comment;
     commentToSave = this.comments.find(x => x.id === commentId);
     if (commentToSave != null &&
-      this.editableEmail.length > 0 &&
-      this.editableText.length > 0 ) {
+      this.editableEmail[editableId].length > 0 &&
+      this.editableText[editableId].length > 0 ) {
       commentToSave.email = this.editableEmail[editableId];
       commentToSave.text = this.editableText[editableId];
       this.commentService.updateComment(commentToSave, commentId).subscribe(() => {
@@ -90,19 +96,15 @@ export class PostDetailsComponent implements OnInit {
 
   removePost(postId) {
     this.postService.deletePost(postId).subscribe(() => {
-      },
-      error => {
+        this.router.navigate(['posts']);
       });
-    this.router.navigate(['posts']);
   }
 
   removeComment(commentId) {
     const index = this.comments.findIndex(comment => comment.id === commentId);
     this.commentService.deleteComment(commentId).subscribe(() => {
-      },
-      error => {
+      this.comments.splice(index, 1);
       });
-    this.comments.splice(index, 1);
   }
 }
 

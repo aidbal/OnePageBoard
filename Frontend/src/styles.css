@@ -4,3 +4,7 @@
 body{
   background-color: #F5F3EE;
 }
+
+.mat-form-field{
+  width: 96%;
+}

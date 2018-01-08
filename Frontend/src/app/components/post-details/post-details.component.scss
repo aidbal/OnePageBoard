@@ -144,6 +144,10 @@ mat-card-actions > .card-date-panel {
   text-align: center;
 }
 
+.mat-card-header-text{
+  width: 100%;
+}
+
 /**
   The card decreases in width by 8px @600px screen width
  */
@@ -151,6 +155,10 @@ mat-card-actions > .card-date-panel {
   .card-remove {
     margin-right: -16px;
   }
+}
+
+.padded{
+  padding: 10px;
 }
 
 .card-info-panel > mat-icon {
